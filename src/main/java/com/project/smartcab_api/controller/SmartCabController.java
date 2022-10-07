@@ -11,13 +11,14 @@ import com.project.smartcab_api.dto.LoginRequest;
 import com.project.smartcab_api.dto.RegistrationRequest;
 import com.project.smartcab_api.repository.SmartCabUsers;
 import com.project.smartcab_api.repository.UserRepository;
+import com.project.smartcab_api.service.SmartCabService;
 
 @RestController("/smartcab")
 
 public class SmartCabController {
-	
 	@Autowired
-	private UserRepository userRepository;
+	private SmartCabService smartCabService;
+	
 	
 	@PostMapping("/login")
 	public ResponseEntity login(@RequestBody LoginRequest loginRequest   )
@@ -30,18 +31,11 @@ public class SmartCabController {
 	@PostMapping("/register")
 	public ResponseEntity register(@RequestBody RegistrationRequest regReq) 
 	{
+		smartCabService.register(regReq);
 		System.out.println("Registration Request Details : " +regReq.toString());
-		SmartCabUsers smartCabUsers = new SmartCabUsers();
-		smartCabUsers.setEmail(regReq.getEmail());
-		smartCabUsers.setFirstname(regReq.getFirstName());
-		smartCabUsers.setLastname(regReq.getLastName());
-		smartCabUsers.setPhno(regReq.getPhno());
-		smartCabUsers.setConfirmPassword(regReq.getConfirmPassword());
-		
-		userRepository.save(smartCabUsers);
-
-		ResponseEntity responseEntity = new ResponseEntity(HttpStatus.CREATED);
 		return null;
+		
+		
 		
 	}
 }
