@@ -28,11 +28,17 @@ public class SmartCabUsers {
 	@Column(nullable = false , length =20)
 	private String password;
 	
+	@Column(nullable = false , length =20)
+	private String confirmPassword;
+	
 	@Column(name= "first_name" , nullable = false, length= 20 ) 
 	private String firstname;
 	
 	@Column(name="last_name", nullable = false, length = 20)
 	private String lastname;
+	
+	@Column(name="phone_number", nullable = false, length = 20)
+	private String phno;
 
 	public Long getId() {
 		return id;
@@ -58,6 +64,14 @@ public class SmartCabUsers {
 		this.password = password;
 	}
 
+	public String getConfirmPassword() {
+		return confirmPassword;
+	}
+
+	public void setConfirmPassword(String confirmPassword) {
+		this.confirmPassword = confirmPassword;
+	}
+
 	public String getFirstname() {
 		return firstname;
 	}
@@ -72,6 +86,14 @@ public class SmartCabUsers {
 
 	public void setLastname(String lastname) {
 		this.lastname = lastname;
+	}
+
+	public String getPhno() {
+		return phno;
+	}
+
+	public void setPhno(String phno) {
+		this.phno = phno;
 	}
 	
 	
